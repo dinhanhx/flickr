@@ -1,0 +1,3 @@
+[submodule "flickr-demo"]
+	path = flickr-demo
+	url = https://github.com/dinhanhx/flickr-demo
