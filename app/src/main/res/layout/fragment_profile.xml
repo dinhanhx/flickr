@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileFragment"
+    android:background="#121212">
+
+    <ImageView
+        android:layout_width="32pt"
+        android:layout_height="32pt"
+        android:background="#d3d3d3"
+        android:padding="0.5pt"
+        android:src="@drawable/avatar"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/avatar"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="24pt"
+        android:gravity="center"
+        android:text="Dinh Anh Vu\n2 Followers - 1 Following"
+        android:textColor="#d3d3d3"
+        android:textSize="6pt"
+        android:layout_below="@+id/avatar"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/userinfo"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_below="@+id/userinfo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="17pt"
+        tools:layout_editor_absoluteY="16pt">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <!--    <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/userinfo">-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="12pt"-->
+<!--                android:text="2020 Decembre 1st"-->
+<!--                android:textSize="6pt"-->
+<!--                android:textColor="#d3d3d3"-->
+<!--                android:gravity="center"/>-->
+
+<!--            <ImageView-->
+<!--                android:layout_width="24pt"-->
+<!--                android:layout_height="24pt"-->
+<!--                android:gravity="center"-->
+<!--                android:background="#d3d3d3"-->
+<!--                android:padding="0.5pt"-->
+<!--                android:src="@drawable/avatar"/>-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="12pt"-->
+<!--                android:text="2019 Novembre 1st"-->
+<!--                android:textSize="6pt"-->
+<!--                android:textColor="#d3d3d3"-->
+<!--                android:gravity="center"/>-->
+
+<!--            <ImageView-->
+<!--                android:layout_width="24pt"-->
+<!--                android:layout_height="24pt"-->
+<!--                android:gravity="center"-->
+<!--                android:background="#d3d3d3"-->
+<!--                android:padding="0.5pt"-->
+<!--                android:src="@drawable/avatar"/>-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="12pt"-->
+<!--                android:text="2018 Octobre 1st"-->
+<!--                android:textSize="6pt"-->
+<!--                android:textColor="#d3d3d3"-->
+<!--                android:gravity="center"/>-->
+
+<!--            <ImageView-->
+<!--                android:layout_width="24pt"-->
+<!--                android:layout_height="24pt"-->
+<!--                android:gravity="center"-->
+<!--                android:background="#d3d3d3"-->
+<!--                android:padding="0.5pt"-->
+<!--                android:src="@drawable/avatar"/>-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="12pt"-->
+<!--                android:text="2017 Septembre 1st"-->
+<!--                android:textSize="6pt"-->
+<!--                android:textColor="#d3d3d3"-->
+<!--                android:gravity="center"/>-->
+
+<!--            <ImageView-->
+<!--                android:layout_width="24pt"-->
+<!--                android:layout_height="24pt"-->
+<!--                android:gravity="center"-->
+<!--                android:background="#d3d3d3"-->
+<!--                android:padding="0.5pt"-->
+<!--                android:src="@drawable/avatar"/>-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="12pt"-->
+<!--                android:text="2016 August 1st"-->
+<!--                android:textSize="6pt"-->
+<!--                android:textColor="#d3d3d3"-->
+<!--                android:gravity="center"/>-->
+
+<!--            <ImageView-->
+<!--                android:layout_width="24pt"-->
+<!--                android:layout_height="24pt"-->
+<!--                android:gravity="center"-->
+<!--                android:background="#d3d3d3"-->
+<!--                android:padding="0.5pt"-->
+<!--                android:src="@drawable/avatar"/>-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="12pt"-->
+<!--                android:text="2015 July 1st"-->
+<!--                android:textSize="6pt"-->
+<!--                android:textColor="#d3d3d3"-->
+<!--                android:gravity="center"/>-->
+
+<!--            <ImageView-->
+<!--                android:layout_width="24pt"-->
+<!--                android:layout_height="24pt"-->
+<!--                android:gravity="center"-->
+<!--                android:background="#d3d3d3"-->
+<!--                android:padding="0.5pt"-->
+<!--                android:src="@drawable/avatar"/>-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="12pt"-->
+<!--                android:text="2014 June 1st"-->
+<!--                android:textSize="6pt"-->
+<!--                android:textColor="#d3d3d3"-->
+<!--                android:gravity="center"/>-->
+
+<!--            <ImageView-->
+<!--                android:layout_width="24pt"-->
+<!--                android:layout_height="24pt"-->
+<!--                android:gravity="center"-->
+<!--                android:background="#d3d3d3"-->
+<!--                android:padding="0.5pt"-->
+<!--                android:src="@drawable/avatar"/>-->
+
+<!--        </LinearLayout>-->
+<!--    </ScrollView>-->
+</RelativeLayout>
