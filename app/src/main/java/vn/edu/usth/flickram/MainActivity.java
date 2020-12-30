@@ -26,9 +26,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        FeedFragment feedFrag = new FeedFragment();
-//        getSupportFragmentManager().beginTransaction().add(R.id.container, feedFrag, null).commit();
-
         mainViewPager = (ViewPager) findViewById(R.id.mainViewPager);
         addTabs(mainViewPager);
 
