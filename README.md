@@ -1,2 +1,1 @@
 # flickr
-An Android application
