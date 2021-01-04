@@ -3,34 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment"
-    android:background="#121212">
+    android:background="#F48585"
+    tools:context=".ProfileFragment">
 
-    <ImageView
-        android:layout_width="32pt"
-        android:layout_height="32pt"
-        android:background="#d3d3d3"
-        android:padding="0.5pt"
-        android:src="@drawable/avatar"
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/avatar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_centerHorizontal="true"
-        android:id="@+id/avatar"/>
+        android:layout_margin="10dp"
+        android:src="@drawable/avatar" />
 
     <TextView
+        android:id="@+id/userinfo"
         android:layout_width="wrap_content"
         android:layout_height="24pt"
+        android:layout_below="@+id/avatar"
+        android:layout_centerHorizontal="true"
         android:gravity="center"
         android:text="Dinh Anh Vu\n2 Followers - 1 Following"
         android:textColor="#d3d3d3"
-        android:textSize="6pt"
-        android:layout_below="@+id/avatar"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/userinfo"/>
+        android:textSize="6pt" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
-        android:layout_below="@+id/userinfo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/userinfo"
         tools:layout_editor_absoluteX="17pt"
         tools:layout_editor_absoluteY="16pt">
 
