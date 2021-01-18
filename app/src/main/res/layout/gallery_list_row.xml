@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-    <vn.edu.usth.flickram.SquareViewItem
+    <vn.edu.usth.flickr.SquareViewItem
         android:id="@+id/image_resource"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
