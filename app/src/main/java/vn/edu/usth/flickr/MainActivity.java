@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
     private void addTabs(ViewPager vp)
     {
         ViewPagerAdapter vap = new ViewPagerAdapter(getSupportFragmentManager());
-        vap.addFrag(new FeedFragment(), "Newsfeed");
+        vap.addFrag(new FeedFragment(apiKey, sharedSecret), "Newsfeed");
         vap.addFrag(new SearchFragment(apiKey, sharedSecret), "Search");
         vap.addFrag(new NotificationFragment(), "Notification");
         vap.addFrag(new ProfileFragment(apiKey, sharedSecret, userId), "Profile");        vp.setAdapter(vap);
