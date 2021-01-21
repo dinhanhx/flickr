@@ -84,6 +84,7 @@ public class SearchFragment extends Fragment {
                 Toast.makeText(getActivity(),"Loading. Please wait.", Toast.LENGTH_LONG).show();
             }
 
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             protected Void doInBackground(Void... voids) {
                 try {
@@ -112,6 +113,8 @@ public class SearchFragment extends Fragment {
         parameters.setMedia("photos");
         parameters.setExtras(Stream.of("media").collect(Collectors.toSet()));
         parameters.setText(text);
+
+        mUrl.clear();
 
         PhotoList<Photo> results = photos.search(parameters, 30, 1 );
         results.forEach(p -> {

@@ -93,6 +93,8 @@ public class ProfileFragment extends Fragment {
         PeopleInterface people = f.getPeopleInterface();
         User user = people.getInfo(userId);
 
+        mUrl.clear();
+
         PhotoList<Photo> photos = people.getPublicPhotos(userId, 27, 1);
         photos.forEach(p -> {
             mUrl.add(p.getSmallSquareUrl());
