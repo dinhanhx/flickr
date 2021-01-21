@@ -12,4 +12,5 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="intent_scheme">oauth</string>
     <string name="intent_host">cprest</string>
+    <string name="loading">loading…</string>
 </resources>
