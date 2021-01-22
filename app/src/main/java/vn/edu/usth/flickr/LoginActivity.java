@@ -59,13 +59,8 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     tokenKey = tokenEditText.getText().toString();
-//                    try {
-//                        OAuth1Token accessToken = authInterface.getAccessToken(
-//                                requestToken, tokenKey);
-//                        auth = authInterface.checkToken(accessToken);
-//                    } catch (FlickrException e) {
-//                        e.printStackTrace();
-//                    }
+                    authTask at = new authTask();
+                    at.execute();
 
                     updateUiWithUser(tokenEditText.getText().toString());
                     sp.edit().putBoolean("logged", true).apply();
@@ -88,14 +83,6 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
     }
 
-    public void sendMessage(View view) {
-        EditText tokenBox = (EditText) view.findViewById(R.id.token);
-        String token = tokenBox.getText().toString();
-
-//        TextView userInfo = (TextView) view.findViewById(R.id.user_info);
-//        userInfo.setText(token);
-    }
-
     private class getTokenTask extends AsyncTask<Void, Void, String> {
 
         @Override
@@ -105,7 +92,6 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(Void... voids) {
-            Log.i("auth", "here");
             authInterface = flickr.getAuthInterface();
             requestToken = authInterface.getRequestToken();
             return authInterface.getAuthorizationUrl(requestToken, Permission.DELETE);
@@ -120,11 +106,10 @@ public class LoginActivity extends AppCompatActivity {
     private class authTask extends AsyncTask<Void, Void, Void>{
         @Override
         protected Void doInBackground(Void... voids){
-            OAuth1Token accessToken = authInterface.getAccessToken(
-                    requestToken, tokenKey);
-            Log.i("haha ded","Token: " + accessToken.getToken());
-            Log.i("haha ded","Secret: " + accessToken.getTokenSecret());
+            Log.i("haha ded",requestToken.toString());
             try {
+                OAuth1Token accessToken = authInterface.getAccessToken(
+                        requestToken, tokenKey);
                 auth = authInterface.checkToken(accessToken);
             } catch (FlickrException e) {
                 e.printStackTrace();
