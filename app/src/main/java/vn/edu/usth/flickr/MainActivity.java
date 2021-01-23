@@ -45,6 +45,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        userId = getIntent().getStringExtra("userId");
+        if (userId == null) {
+            userId = "143081057@N07";
+        }
+
         mainViewPager = (ViewPager) findViewById(R.id.mainViewPager);
         addTabs(mainViewPager);
 
