@@ -39,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     Auth auth;
 
     String tokenKey;
+    String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-
+                    userId = auth.getUser().getId();
                     updateUiWithUser(auth.getUser().getUsername());
                     sp.edit().putBoolean("logged", true).apply();
                     goToMainActivity();
@@ -97,6 +98,7 @@ public class LoginActivity extends AppCompatActivity {
     public void goToMainActivity(){
         Intent i = new Intent(getApplicationContext(), MainActivity.class);
         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        i.putExtra("userId", userId);
         startActivity(i);
     }
 
