@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import com.flickr4java.flickr.Flickr;
 import com.flickr4java.flickr.FlickrException;
 import com.flickr4java.flickr.REST;
+import com.flickr4java.flickr.people.PeopleInterface;
 import com.flickr4java.flickr.photos.Photo;
 import com.flickr4java.flickr.photos.PhotoList;
 import com.flickr4java.flickr.photos.PhotosInterface;
@@ -64,6 +65,7 @@ public class FeedFragment extends Fragment {
             protected Void doInBackground(Void... voids) {
                 try {
                     setupNews();
+                    // Print logs for mURL, mTitle, mLike
                     Log.i("mUrl", mUrl.toString());
                     Log.i("mTitle", mTitle.toString());
                     Log.i("mLike", mLike.toString());
@@ -84,7 +86,7 @@ public class FeedFragment extends Fragment {
         Flickr f = new Flickr(apiKey, sharedKey, new REST());
 
         PhotosInterface pi = f.getPhotosInterface();
-        PhotoList<Photo> popularPhotos = pi.getRecent(null, 3, 0);
+        PhotoList<Photo> popularPhotos = pi.getRecent(null, 27, 0);
 
         mUsername.clear();
         mTitle.clear();
@@ -93,20 +95,23 @@ public class FeedFragment extends Fragment {
 
         popularPhotos.forEach(p -> {
             // Get username
-//            Log.i("setupNews", p.getOwner().getUsername());
-            mUsername.add(p.getOwner().getUsername());
-            // Somehow flickr doesn't return Username. It's API fault not Dinh Anh
+            String userId = p.getOwner().getId();
+            PeopleInterface peopleInterface = f.getPeopleInterface();
+            String username = "";
+            try {
+                username = peopleInterface.getInfo(userId).getUsername();
+            } catch (FlickrException e) {
+                e.printStackTrace();
+            }
+            mUsername.add(username);
 
             // Get number of favorites
-//            Log.i("setUpNews", String.valueOf(p.getStats().getFavorites()));
             mLike.add(String.valueOf(p.getStats().getFavorites()));
 
             // Get title
-//            Log.i("setUpNews", p.getTitle());
             mTitle.add(p.getTitle());
 
             // Get url
-//            Log.i("setupNews", p.getSmallSquareUrl());
             mUrl.add(p.getSmallSquareUrl());
         });
     }
