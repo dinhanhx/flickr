@@ -1,4 +1,4 @@
-package vn.edu.usth.flickram;
+package vn.edu.usth.flickr;
 
 import android.content.Context;
 import android.util.AttributeSet;

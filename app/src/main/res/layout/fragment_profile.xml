@@ -21,7 +21,7 @@
         android:layout_below="@+id/avatar"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="Dinh Anh Vu\n2 Followers - 1 Following"
+        android:text="@string/loading"
         android:textColor="#d3d3d3"
         android:textSize="6pt" />
 

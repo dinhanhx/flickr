@@ -1,32 +1,25 @@
-package vn.edu.usth.flickram;
+package vn.edu.usth.flickr;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.Toast;
+
 import androidx.appcompat.widget.AppCompatImageView;
 
 
 import com.bumptech.glide.Glide;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
-public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.CustomViewHolder> {
+public class PostAdapter extends RecyclerView.Adapter<PostAdapter.CustomViewHolder> {
     private final List<String> mUrlList;
     private final Activity mActivity;
 
-    public GalleryAdapter(Activity activity, List<String> urllist){
+    public PostAdapter(Activity activity, List<String> urllist){
         mActivity = activity;
         mUrlList = urllist;
     }
@@ -42,7 +35,7 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.CustomVi
     @Override
     public CustomViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.gallery_list_row, parent, false);
-        return new GalleryAdapter.CustomViewHolder(view);
+        return new CustomViewHolder(view);
     }
 
     @Override
@@ -54,14 +47,14 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.CustomVi
                 .centerCrop()
                 .into(holder.imageResource);
 
-        final int itemPosition = holder.getAdapterPosition();
-        holder.imageResource.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Toast.makeText(mActivity, mUrlList.get(itemPosition),
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+//        final int itemPosition = holder.getAdapterPosition();
+//        holder.imageResource.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                Toast.makeText(mActivity, mUrlList.get(itemPosition),
+//                        Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     @Override
