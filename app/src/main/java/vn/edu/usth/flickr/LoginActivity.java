@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.login);
 
         sp = getSharedPreferences("login",MODE_PRIVATE);
-//        sp.edit().putBoolean("logged", false).apply();
+        sp.edit().putBoolean("logged", false).apply();
 
         if(sp.getBoolean("logged",false)){
             goToMainActivity();
