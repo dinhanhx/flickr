@@ -1,6 +1,7 @@
 package vn.edu.usth.flickr;
 
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -47,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.login);
 
         sp = getSharedPreferences("login",MODE_PRIVATE);
-        sp.edit().putBoolean("logged", false).apply();
+//        sp.edit().putBoolean("logged", false).apply();
 
         if(sp.getBoolean("logged",false)){
             goToMainActivity();
@@ -65,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     // do the magic here
                     AsyncTask<Void, Void, Void> authTask = new AsyncTask<Void, Void, Void>() {
+                        @SuppressLint("StaticFieldLeak")
                         @Override
                         protected Void doInBackground(Void... voids) {
                             OAuth1AccessToken accessToken = (OAuth1AccessToken) authInterface.getAccessToken(requestToken, tokenKey);
@@ -103,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void updateUiWithUser(String name) {
-        Toast.makeText(getApplicationContext(), name, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Welcome " + name, Toast.LENGTH_LONG).show();
     }
 
     private class getTokenTask extends AsyncTask<Void, Void, String> {

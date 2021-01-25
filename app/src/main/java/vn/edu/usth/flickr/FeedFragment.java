@@ -1,5 +1,6 @@
 package vn.edu.usth.flickr;
 
+import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -7,12 +8,14 @@ import android.os.Bundle;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.flickr4java.flickr.Flickr;
 import com.flickr4java.flickr.FlickrException;
@@ -35,6 +38,7 @@ public class FeedFragment extends Fragment {
 
     private ArrayList<String> mUrl = new ArrayList<String>();
     private ArrayList<String> mUsername = new ArrayList<String>();
+    private ArrayList<String> mAvatar = new ArrayList<String>();
     private ArrayList<String> mTitle = new ArrayList<String>();
     private ArrayList<String> mLike = new ArrayList<String>();
 
@@ -51,25 +55,29 @@ public class FeedFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        feedView = inflater.inflate(R.layout.fragment_imageragment, container, false);
+        feedView = inflater.inflate(R.layout.fragment_feed, container, false);
 
-//        RecyclerView recyclerView = (RecyclerView) feedView.findViewById(R.id.recycler_view);
-//        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
-//        recyclerView.setHasFixedSize(true);
-//        GalleryAdapter adapter = new GalleryAdapter(getActivity(), mUrl);
-//        recyclerView.setAdapter(adapter);
+        Toast.makeText(getActivity(),"Loading recent posts. Please wait.", Toast.LENGTH_LONG).show();
+
+        RecyclerView recyclerView = (RecyclerView) feedView.findViewById(R.id.recycler_view_feed);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setHasFixedSize(true);
+        FeedAdapter adapter = new FeedAdapter(getActivity(), mUrl, mUsername, mAvatar, mTitle, mLike);
+        recyclerView.setAdapter(adapter);
 
         AsyncTask<Void, Void, Void> setupNewsTask = new AsyncTask<Void, Void, Void>() {
+            @SuppressLint("StaticFieldLeak")
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             protected Void doInBackground(Void... voids) {
                 try {
                     setupNews();
                     // Print logs for mURL, mTitle, mLike
-                    Log.i("mUrl", mUrl.toString());
-                    Log.i("mTitle", mTitle.toString());
-                    Log.i("mLike", mLike.toString());
-                    Log.i("mUsername", mUsername.toString());
+                    Log.i("feedd", mUrl.toString());
+                    Log.i("feedd", mTitle.toString());
+                    Log.i("feedd", mLike.toString());
+                    Log.i("feedd", mUsername.toString());
+                    Log.i("feedd", mAvatar.toString());
                 } catch (FlickrException e) {
                     e.printStackTrace();
                 }
@@ -86,9 +94,10 @@ public class FeedFragment extends Fragment {
         Flickr f = new Flickr(apiKey, sharedKey, new REST());
 
         PhotosInterface pi = f.getPhotosInterface();
-        PhotoList<Photo> popularPhotos = pi.getRecent(null, 27, 0);
+        PhotoList<Photo> popularPhotos = pi.getRecent(null, 15, 0);
 
         mUsername.clear();
+        mAvatar.clear();
         mTitle.clear();
         mLike.clear();
         mUrl.clear();
@@ -105,6 +114,16 @@ public class FeedFragment extends Fragment {
             }
             mUsername.add(username);
 
+            // Get avatar
+            String avatar = "";
+            try {
+                avatar = peopleInterface.getInfo(userId).getSecureBuddyIconUrl();
+            } catch (FlickrException e) {
+                e.printStackTrace();
+            }
+            mAvatar.add(avatar);
+
+
             // Get number of favorites
             mLike.add(String.valueOf(p.getStats().getFavorites()));
 
@@ -112,7 +131,7 @@ public class FeedFragment extends Fragment {
             mTitle.add(p.getTitle());
 
             // Get url
-            mUrl.add(p.getSmallSquareUrl());
+            mUrl.add(p.getMediumUrl());
         });
     }
 }

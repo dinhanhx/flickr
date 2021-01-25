@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_horizontal"
+    android:gravity="left"
     android:orientation="vertical"
-    android:layout_margin="10dp">
+    android:layout_margin="10dp"
+    android:background="#ffffff">
 
 
     <androidx.cardview.widget.CardView
@@ -21,38 +22,46 @@
 
             <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/profile_image"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/avatar"
                 tools:ignore="MissingConstraints" />
 
             <TextView
                 android:id="@+id/username"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
-                android:text="@string/loading"
+                android:text="username"
                 android:textSize="24dp"
-                android:gravity="center_horizontal"
+                android:gravity="center_vertical"
                 app:layout_constraintStart_toEndOf="@+id/profile_image"
-                app:layout_constraintTop_toTopOf="parent" />
+                tools:ignore="MissingConstraints" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <TextView
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id = "@+id/recycler_view_post">
-    </androidx.recyclerview.widget.RecyclerView>
+        android:text="title"
+        android:textSize="16dp"
+        android:layout_marginLeft="85dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="15dp"/>
+
+
+    <ImageView
+        android:id="@+id/image_feed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-<!--        android:layout_toBottomOf="@+id/recycler_view_post"-->
-
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -75,7 +84,7 @@
                 android:id="@+id/number_likes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/loading"
+                android:text="10000"
                 android:textSize="16dp"
                 android:maxEms="12"
                 android:singleLine="false"
@@ -85,7 +94,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/loading"
+                android:text=" likes"
                 android:textSize="16dp"
                 android:maxEms="12"
                 android:singleLine="false"

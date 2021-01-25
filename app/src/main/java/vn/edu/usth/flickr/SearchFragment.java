@@ -81,7 +81,7 @@ public class SearchFragment extends Fragment {
             @Override
             protected void onPreExecute(){
                 adapter.clearUrlList();
-                Toast.makeText(getActivity(),"Loading. Please wait.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(),"Loading search results.", Toast.LENGTH_LONG).show();
             }
 
             @RequiresApi(api = Build.VERSION_CODES.N)

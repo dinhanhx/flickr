@@ -10,8 +10,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_feed"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="17pt"
-        tools:layout_editor_absoluteY="16pt">
+        android:layout_height="match_parent">
     </androidx.recyclerview.widget.RecyclerView>
 </RelativeLayout>
